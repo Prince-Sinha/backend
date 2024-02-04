@@ -36,8 +36,7 @@ exports.getPost = catchAsync(async (req,res,next)=>{
 
 exports.updateOne = catchAsync(async (req,res,next)=>{
     
-    const filterBody = filterObj(req.body,'supported','address');
-    if(req.file) filterBody.photo = req.file.filename
+    // if(req.file) filterBody.photo = req.file.filename
     const updated = await User.findByIdAndUpdate(req.params.id,req.body,{ new : true,runValidators: true});
 
     if(!updated){
