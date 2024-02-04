@@ -4,11 +4,11 @@ const fs = require('fs');
 const USer = require('./Models/userModel');
 const Opinion = require('./Models/opinionModel')
 
-process.on('uncaughtException', err => {
-  console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
-  console.log(err, err.message);
-  process.exit(1);
-});
+// process.on('uncaughtException', err => {
+//   console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
+//   console.log(err, err.message);
+//   process.exit(1);
+// });
 
 dotenv.config({ path : './config.env'});
 const app = require('./app');
