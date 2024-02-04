@@ -4,7 +4,7 @@ const userControllers = require('./../controllers/userController');
 const router = express.Router();
 // const multer = require('multer');
 
-const upload = multer({ dest :'public/users'})
+// const upload = multer({ dest :'public/users'})
 
 router.post('/signup',authControllers.signup) 
 router.post('/login' , authControllers.login)
