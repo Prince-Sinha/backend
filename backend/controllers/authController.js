@@ -33,7 +33,7 @@ exports.signup = catchAsync(async (req,res,next)=>{
         httpOnly: true
       };
     res.cookie('jwt',token,cookieOptions);
-    console.log
+   
     res.status(201).json({
         status : 'success',
         token,
@@ -96,7 +96,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     //     'host'
     //   )}/api/v1/users/resetPassword/${resetToken}`;
     //   await new Email(user, resetURL).sendPasswordReset();
-       console.log(resetToken);
+    //    console.log(resetToken);
   
       res.status(200).json({
         status: 'success',

@@ -5,25 +5,18 @@ const postRouter = require('./Routes/postRoutes');
 const userRouter = require('./Routes/userRoutes');
 const gobalErrorHandler = require('./controllers/errorController')
 const opinionRouter = require('./Routes/opinionRoutes');
-
-
+const compression = require('compression');
 const app = express();
-const corsOptions = {
-    origin: 'http://localhost:5173',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204,
-  };
-  
-  app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cors());
 app.use(express.static(`${__dirname}/public`));
 
+app.use(compression());
+
 app.use((req,res,next)=>{
     req.requestTime = new Date().toISOString();
-    console.log(req.requestTime);
+    // console.log(req.requestTime);
     next();
 })
 

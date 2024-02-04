@@ -20,14 +20,11 @@ const upload = multer({
   fileFilter: multerFilter
 });
 
-exports.uploadPhoto = (req, res, next) => {
-    console.log('Uploaded File:', req.file);
-    upload.single('photo')(req, res, next);
-  };
+exports.uploadPhoto = upload.single('photo')
   
 
 exports.resizePhoto = catchAsync(async (req, res, next) => {
-  console.log(req.file);
+  
   if (!req.file) return next();
   
 
@@ -44,8 +41,7 @@ exports.resizePhoto = catchAsync(async (req, res, next) => {
 
 exports.fileUpdate = catchAsync(async (req,res,next)=>{
     if (req.file) req.body.photo = req.file.filename;
-    console.log(req.file);
-    console.log('Hello')
+   
     const post = await Post.findOneAndUpdate({createAt : { $gt : Date.now()-1000*60*10}},{photo : req.body.photo},{ new : true,runValidators: true});
     if(!post){
         return next(new AppError('No post found with this Id',404));
