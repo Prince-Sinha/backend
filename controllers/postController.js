@@ -2,8 +2,7 @@ const Post = require('./../Models/postModel');
 const User = require('./../Models/userModel');
 const AppError = require('./../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
-const multer = require('multer');
-const sharp = require('sharp');
+
 
 
 exports.unresolvedPost = catchAsync(async (req,res,next)=>{

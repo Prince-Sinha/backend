@@ -14,7 +14,6 @@ dotenv.config({ path : './config.env'});
 const app = require('./app');
 
 const Post = require('./Models/postModel');
-const { json } = require('express');
 const User = require('./Models/userModel');
 
 
@@ -29,7 +28,7 @@ const data = JSON.parse(fs.readFileSync('./userData.json','utf-8'));
 
 
 
-const server = app.listen( 8000, ()=>{
+const server = app.listen( 3000, ()=>{
     console.log(`App is listening on ${process.env.PORT}...`);
 });
 
