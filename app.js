@@ -19,7 +19,9 @@ app.use((req,res,next)=>{
     // console.log(req.requestTime);
     next();
 })
-
+app.use('/',(req,res)=>{
+    res.send("Hii");
+})
 app.use('/api/v1/posts', postRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/opinions', opinionRouter);
