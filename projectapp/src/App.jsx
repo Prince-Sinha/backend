@@ -15,7 +15,7 @@ import Create from './pages/Create'
 import SignUp from './pages/SignUp'
 import {createBrowserRouter , RouterProvider} from 'react-router-dom';
 import { action as logoutaction} from './pages/Logout'
-import { tokenLoader } from './util/auth'
+import { checkAuthLoader,tokenLoader } from './util/auth'
 
 const router = createBrowserRouter([
   { path : '/', element : <Root />,
@@ -26,9 +26,9 @@ const router = createBrowserRouter([
       {path : 'article' , element : <Article />},
       {path : 'resolved' , element : <Resolved /> },
       {path : 'posts' , element : <Post />},
-      {path : 'posts/:id', element : <Detail />},
-      {path : 'profile', element : <Profile />},
-      {path : 'logout' , action : logoutaction},
+      {path : 'posts/:id', element : <Detail />, loader :checkAuthLoader},
+      {path : 'profile', element : <Profile /> , loader : checkAuthLoader},
+      {path : 'logout' , action : logoutaction ,loader : checkAuthLoader},
       {path : '/notification', element : <Notification/>},
     ]
   },
