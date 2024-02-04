@@ -3,11 +3,9 @@ const postController = require('./../controllers/postController')
 const router = express.Router();
 
 
-router
-   .route('/unresolved')
-   .get(postController.unresolvedPost)
-   .post(postController.createPost)
-   .delete(postController.deletePost)
+router.get('/unresolved',postController.unresolvedPost)
+   
+   
 
 router.get('/resolved', postController.resolvedPost)
 
@@ -19,8 +17,6 @@ router
 router
     .route('/create')
     .post(postController.createPost)
-router.patch('/create/photo',postController.uploadPhoto,postController.resizePhoto,postController.fileUpdate)
-
 
 
 module.exports = router; 

@@ -12,12 +12,10 @@ router.post('/forgotPassword',authControllers.forgotPassword)
 router.patch('/resetPassword/:token',authControllers.resetPassword);
 
 
-router
-   .route('/:id').get(userControllers.getUser)
-   .patch(userControllers.UploadUserPhoto,userControllers.updateOne);
+router.route('/:id').get(userControllers.getUser)
 
-router
-   .route('/posts/:id').get(userControllers.getPost);
+
+router.route('/posts/:id').get(userControllers.getPost);
 
  
 

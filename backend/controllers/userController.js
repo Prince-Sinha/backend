@@ -2,32 +2,6 @@ const User = require('./../Models/userModel');
 const Post = require('./../Models/postModel')
 const AppError = require('./../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
-const multer = require('multer');
-
-const multerStorage = multer.diskStorage({
-    destination : (req,file,cb)=>{
-        cb(null,'public/users')
-    },
-    filename: (req,file,cb)=>{
-        const ext = file.mimetype.split('/')[0];
-        cb(null `user-${req.params.id}-${Date.now()}.${ext}`);
-    }
-});
-
-const multerFilter = (req,file,cb)=>{
-  if(file.mimetype.startsWith('image')){
-    cb(null,true);
-  }else{
-    cb(new AppError('Not an image ! Please upload an image',400),false);
-
-  }
-}
-const upload = multer({
-    storage : multerStorage,
-    fileFilter : multerFilter
- });
-
-exports.UploadUserPhoto = upload.single('photo')
 
 exports.getUser = catchAsync(async (req,res,next)=>{
 
@@ -58,14 +32,7 @@ exports.getPost = catchAsync(async (req,res,next)=>{
         }
     })
 });
-const filterObj = (obj,...rest)=>{
-    const newObj={};
-    // for looping object
-    Object.keys(obj).forEach(el=>{
-      if(rest.includes(el)) newObj[el]=obj[el];
-    })
-    return newObj;
-  }
+
 
 exports.updateOne = catchAsync(async (req,res,next)=>{
     
