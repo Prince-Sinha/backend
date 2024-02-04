@@ -1,2 +1,2 @@
 # Raise.Change
-Buit using MERN
+Built using MERN
