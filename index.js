@@ -32,10 +32,10 @@ const server = app.listen( 3000, ()=>{
     console.log(`App is listening on ${process.env.PORT}...`);
 });
 
-process.on('unhandledRejection', err => {
-  console.log('UNHANDLED REJECTION! 💥 Shutting down...');
-  console.log(err, err.message,err.name);
-  server.close(() => {
-    process.exit(1);
-  });
-});
+// process.on('unhandledRejection', err => {
+//   console.log('UNHANDLED REJECTION! 💥 Shutting down...');
+//   console.log(err, err.message,err.name);
+//   server.close(() => {
+//     process.exit(1);
+//   });
+// });
