@@ -5,23 +5,20 @@ const postRouter = require('./Routes/postRoutes');
 const userRouter = require('./Routes/userRoutes');
 const gobalErrorHandler = require('./controllers/errorController')
 const opinionRouter = require('./Routes/opinionRoutes');
-const compression = require('compression');
 const app = express();
+
 
 app.use(express.json());
 app.use(cors());
 app.use(express.static(`${__dirname}/public`));
 
-app.use(compression());
 
 app.use((req,res,next)=>{
     req.requestTime = new Date().toISOString();
-    // console.log(req.requestTime);
+    console.log(req.requestTime);
     next();
 })
-app.use('/',(req,res)=>{
-    res.send("Hii");
-})
+
 app.use('/api/v1/posts', postRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/opinions', opinionRouter);

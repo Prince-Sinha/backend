@@ -23,9 +23,6 @@ const DB = process.env.DATABASE.replace('<password>', process.env.PASSWORD);
 
 mongoose.connect(DB,{}).then(()=> console.log('DB connect successfully..'));
 
-const data = JSON.parse(fs.readFileSync('./userData.json','utf-8'));
-
-
 
 
 const server = app.listen( 3000, ()=>{
