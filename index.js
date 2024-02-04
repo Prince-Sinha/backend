@@ -17,7 +17,7 @@ const Post = require('./Models/postModel');
 const User = require('./Models/userModel'); 
 
 
-  
+     
 
 const DB = process.env.DATABASE.replace('<password>', process.env.PASSWORD);
 
