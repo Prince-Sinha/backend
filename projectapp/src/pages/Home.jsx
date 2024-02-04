@@ -19,14 +19,14 @@ export default function Home(){
       async function fetchPost(){
 
          try{
-            const response = await fetch('http://127.0.0.1:8000/api/v1/posts/unresolved');
+            const response = await fetch('/api/v1/posts/unresolved');
             const resData = await response.json();
 
             setUnresolved(resData.data.post);
 
             
             if(id){
-               const res = await fetch(`http://127.0.0.1:8000/api/v1/users/${id}`);
+               const res = await fetch(`/api/v1/users/${id}`);
                const userresData = await res.json();
                userresData.data.user.supported.forEach((el)=>{
                      setSupport((prev)=>{
@@ -81,7 +81,7 @@ export default function Home(){
           supported : supported
         }
       //   console.log(supported);
-        const res = await fetch(`http://127.0.0.1:8000/api/v1/users/${id}`,{
+        const res = await fetch(`/api/v1/users/${id}`,{
            method : 'PATCH',
            headers : {
               'Content-Type' : 'application/json'
@@ -159,7 +159,7 @@ export default function Home(){
                
                {el.photo ?
                <div className='content-div-img'>
-                   <img src={`http://localhost:8000/posts/${el.photo}`} alt="" /></div>: <div></div> }
+                   <img src={`/postimg/${el.photo}`} alt="" /></div>: <div></div> }
               
                
         </div>

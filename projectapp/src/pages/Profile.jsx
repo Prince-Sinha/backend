@@ -21,7 +21,7 @@ export default function Profile(){
         async function fetchData(){
   
            try{
-              const response = await fetch(`http://127.0.0.1:8000/api/v1/users/${id}`);
+              const response = await fetch(`/api/v1/users/${id}`);
               const resData = await response.json();
   
               setData(resData.data.user);
@@ -63,7 +63,7 @@ export default function Profile(){
           {!edit ? <a > <ModeEditIcon color='primary'/> </a>: <button type="submit" >Save</button>}
         </div>
         <div className="profile-name">
-            <img src={`http://127.0.0.1:8000/users/user1.jpg`} alt="Profile" />
+            <img src={`userimg/user1.jpg`} alt="Profile" />
             <p>{profileData.name}</p>
         </div>
 

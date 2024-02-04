@@ -31,7 +31,7 @@ export default function Header() {
                         <li><QrCode /></li>
                         {token && <li> <a href="/notification"><Badge color="secondary" variant="dot"> <NotificationsOutlinedIcon /></Badge></a></li>}
                         <li><a href="">Helpline</a></li>
-                        <li>{token && <Avatar sx={{marginLeft:1, marginRight:1,alignItems:'center'}} alt="Profile Picture" src={`http://127.0.0.1:8000/users/user2.jpg`} />}</li>
+                        <li>{token && <Avatar sx={{marginLeft:1, marginRight:1,alignItems:'center'}} alt="Profile Picture" src={`/userimg/user2.jpg`} />}</li>
                         <li>{!token && <NavLink to="/login">LogIn/SignUp</NavLink>}</li>
                          <li>
                             { token &&

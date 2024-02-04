@@ -49,12 +49,12 @@ export default function FormDialog() {
             if(id){
               
                 formJson.user = id;
-                const userresp = await fetch(`http://localhost:8000/api/v1/users/${id}`);
+                const userresp = await fetch(`/api/v1/users/${id}`);
                 const user = await userresp.json();
                 formJson.State = user.data.user.State;
                 formJson.city = user.data.user.city;
                 // multer wali fetch req to generate string 
-                const response = await fetch(`http://127.0.0.1:8000/api/v1/posts/create`,{
+                const response = await fetch(`/api/v1/posts/create`,{
                   method : 'POST',
                   headers : {
                     'Content-Type' : 'application/json'

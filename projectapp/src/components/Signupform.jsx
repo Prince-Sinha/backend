@@ -29,7 +29,7 @@ export default function Signupform(){
     const formJson = Object.fromEntries(form.entries());
    
 
-    const res = await fetch("http://localhost:8000/api/v1/users/signup", {
+    const res = await fetch("/api/v1/users/signup", {
       method: e.target.method,
       headers: {
         'Content-Type': 'application/json'

@@ -16,7 +16,7 @@ export default function Post(){
    useEffect(()=>{
      async function fetchPost(){
         try{
-            const response = await fetch(`http://127.0.0.1:8000/api/v1/users/posts/${id}`);
+            const response = await fetch(`/api/v1/users/posts/${id}`);
             const resData = await response.json();
             if(response.ok){
               setPost(resData.data.post);
@@ -80,7 +80,7 @@ export default function Post(){
                </div>
                {el.photo ? 
                <div className='content-div-img'>
-                   <img src={`http://localhost:8000/posts/${el.photo}`} alt="" />
+                   <img src={`/postimg/${el.photo}`} alt="" />
                 </div> : <div></div> 
                 } 
               

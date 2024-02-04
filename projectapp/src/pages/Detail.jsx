@@ -49,7 +49,7 @@ export default function Detail(){
         formJSON.user = userid;
         formJSON.post = id;
 
-        const res = await fetch(`http://127.0.0.1:8000/api/v1/opinions`,{
+        const res = await fetch(`/api/v1/opinions`,{
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json'
@@ -79,7 +79,7 @@ export default function Detail(){
 
     useEffect(()=>{
         async function fetchData(){
-          const response = await fetch(`http://127.0.0.1:8000/api/v1/posts/${id}`);
+          const response = await fetch(`/api/v1/posts/${id}`);
           const resData = await response.json();
           if(!response.ok){
              console.log('ERR');
@@ -115,13 +115,13 @@ export default function Detail(){
             
             <ListItemButton sx={{marginBottom: 0, paddingBottom:0,paddingLeft: 0, paddingTop : 3}}>
                  <ListItemAvatar>
-                <Avatar alt="Profile Picture" src={`http://127.0.0.1:8000/users/${postDetail.user.photo}`} />
+                <Avatar alt="Profile Picture" src={`/users/${postDetail.user.photo}`} />
                 </ListItemAvatar>
                 <ListItemText primary={postDetail.user.name} />
             </ListItemButton>
             <div className='createdAt'><span><DriveFileRenameOutlineOutlinedIcon /></span> {postDetail.createdAt} </div>
         
-            {postDetail.photo ? <img src={`http://127.0.0.1:8000/posts/${postDetail.photo}`} alt="" />:<p></p>}
+            {postDetail.photo ? <img src={`/postimg/${postDetail.photo}`} alt="" />:<p></p>}
             <p>{postDetail.problemStatement}</p>
             <h4>Your Opinion Matters</h4>
             </div>
@@ -143,7 +143,7 @@ export default function Detail(){
                 
                                 <ListItemButton sx={{marginBottom: 0, paddingBottom:0,paddingLeft: 0}}>
                                     <ListItemAvatar>
-                                    <Avatar alt="Profile Picture" src={`http://127.0.0.1:8000/${el.photo}`} />
+                                    <Avatar alt="Profile Picture" src={`/userimg/${el.photo}`} />
                                     </ListItemAvatar>
                                     <ListItemText primary={el.user.name} secondary={el.opinion} />
                                 </ListItemButton>
