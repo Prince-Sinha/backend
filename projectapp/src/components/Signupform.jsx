@@ -38,7 +38,7 @@ export default function Signupform(){
     })
 
     const resData = await res.json();
-    console.log(resData)
+    // console.log(resData)
     if(!res.ok){
       toast.error(resData.message, {
         position: "top-right",
@@ -82,7 +82,7 @@ export default function Signupform(){
   const handleChange1= (event) => {
     setState(event.target.value);
     const h= event.target.value;
-    console.log(h);
+    // console.log(h);
     setSelectCity(citylist[h]);
   };
 

@@ -1,5 +1,7 @@
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { buttonBaseClasses } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Form } from 'react-router-dom'
 import {useState,useEffect} from 'react'
 export default function Profile(){
@@ -13,7 +15,7 @@ export default function Profile(){
         address : '',
     });
     const id = localStorage.getItem('_id');
-    console.log(id);
+   
    
     useEffect(()=>{
         async function fetchData(){
@@ -23,10 +25,19 @@ export default function Profile(){
               const resData = await response.json();
   
               setData(resData.data.user);
-              console.log(profileData);
+              
   
            }catch(err){
-               console.log(err);
+            toast.error('Something went wrong!', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light"
+              });
            }
         }
         
@@ -35,6 +46,18 @@ export default function Profile(){
      },[]);
 
     return <main id="profile">
+      <ToastContainer
+         position="top-right"
+         autoClose={5000}
+         hideProgressBar={false}
+         newestOnTop={false}
+         closeOnClick
+         rtl={false}
+         pauseOnFocusLoss
+         draggable
+         pauseOnHover
+         theme="light"
+     />
         <Form>
         <div className='profile-btn' >
           {!edit ? <a > <ModeEditIcon color='primary'/> </a>: <button type="submit" >Save</button>}

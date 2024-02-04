@@ -25,7 +25,7 @@ export default function FormDialog() {
   const handleChange1= (event) => {
     setDep(event.target.value);
     const h= event.target.value;
-    console.log(h);
+    
   };
 
   return (

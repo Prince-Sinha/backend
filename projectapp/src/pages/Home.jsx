@@ -80,7 +80,7 @@ export default function Home(){
         const supportdata = {
           supported : supported
         }
-        console.log(supported);
+      //   console.log(supported);
         const res = await fetch(`http://127.0.0.1:8000/api/v1/users/${id}`,{
            method : 'PATCH',
            headers : {

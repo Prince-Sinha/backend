@@ -11,7 +11,7 @@ export default function SideBar(){
     return (
          
          <div className="side">
-            {console.log(activeClass)}
+            {/* {console.log(activeClass)} */}
             <ul>
                 <li className={activeClass==='article'?'act':undefined}><NavLink to='/article' onClick={() => handleChange('article')} end><button>Article</button></NavLink></li>
                 <li className={activeClass === 'unresolved'?'act':undefined}><NavLink to='/' end><button>Unresolved</button></NavLink></li>

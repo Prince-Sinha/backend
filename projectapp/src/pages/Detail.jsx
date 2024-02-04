@@ -32,7 +32,7 @@ export default function Detail(){
         const formJSON = Object.fromEntries(form.entries());
 
         const userid = localStorage.getItem('_id');
-        console.log(userid);
+        // console.log(userid);
         if(!userid){
             toast.info('Please Login to write your opinion', {
                 position: "bottom-left",
