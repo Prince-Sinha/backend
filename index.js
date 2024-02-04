@@ -12,7 +12,7 @@ process.on('uncaughtException', err => {
 
 dotenv.config({ path : './config.env' });
 const app = require('./app');
-
+ 
 const Post = require('./Models/postModel');
 const User = require('./Models/userModel'); 
 
