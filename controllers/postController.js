@@ -26,8 +26,48 @@ exports.unresolvedPost = catchAsync(async (req,res,next)=>{
     });
 })
 
+exports.unresolvedPostDept = catchAsync(async (req,res,next)=>{
+    const name = req.params.name;
+    const unresPosts = await Post.find({ status : false , dept: name}).populate({
+        path : 'opinions',
+        fields : 'opinion'
+    });
+
+
+    if(!unresPosts){
+        return next(new AppError('Every Issuse has been resolved',404))
+    }
+
+   
+    res.status(200).json({
+        status : 'success',
+        result : unresPosts.length,
+        data : {
+            post : unresPosts
+        }
+    });
+})
+
 exports.resolvedPost = catchAsync(async (req,res,next)=>{
     const resPosts = await Post.find({status : true}).populate({
+        path : 'opinions',
+        fields : 'opinion'
+    });
+    if(!resPosts){
+        return next(new AppError('No Resolved Issuse',404));
+    }
+    res.status(200).json({
+        status : 'success',
+        result : resPosts.length,
+        data : {
+            post : resPosts
+        }
+    })
+})
+
+exports.resolvedPostDept = catchAsync(async (req,res,next)=>{
+    const name = req.params.name;
+    const resPosts = await Post.find({status : true, dept : name}).populate({
         path : 'opinions',
         fields : 'opinion'
     });

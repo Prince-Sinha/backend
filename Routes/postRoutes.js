@@ -4,6 +4,8 @@ const router = express.Router();
 
 
 router.get('/unresolved',postController.unresolvedPost)
+router.get('/dept/unres/:name', postController.unresolvedPostDept)
+router.get('/dept/res/:name', postController.resolvedPostDept)
    
    
 

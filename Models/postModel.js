@@ -31,8 +31,11 @@ const postSchema = new mongoose.Schema({
     },
     dept : {
         type : String,
-        enum: ['Municipal Cooperation', 'CyberSecurity Department','Electricity Department'],
+        enum: ['MunicipalCooperation', 'CyberSecurityDepartment','ElectricityDepartment'],
         required : true,
+    },
+    deptNumber : {
+        type : Number
     }
     
 },{

@@ -42,6 +42,43 @@ exports.signup = catchAsync(async (req,res,next)=>{
     
 });
 
+exports.loginAdmin = catchAsync(async (req,res,next)=>{
+    const {email,password}= req.body;
+
+    if(!email || !password){
+        return next(new AppError(`Please Provide ${!email?'phoneNumber':'password'}`,404));
+    }
+
+    const user = await User.findOne({email}).select('+password');
+
+    if (!user || !(await user.CorrectPassword(password, user.password))) {
+        return next(new AppError('Incorrect email or password', 401));
+      }
+
+    const token = signToken(user._id);
+
+    const cookieOptions = {
+        expires: new Date(
+          Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+        ),
+        httpOnly: true
+      };
+    res.cookie('jwt',token,cookieOptions);
+
+    // Remove Password from the Output
+     user.password = undefined;
+
+
+    res.status(200).json({
+        status :'success',
+        token,
+        data : {
+            user
+        }
+    })
+
+});
+
 exports.login = catchAsync(async (req,res,next)=>{
     const {phoneNumber,password}= req.body;
 
@@ -52,7 +89,7 @@ exports.login = catchAsync(async (req,res,next)=>{
     const user = await User.findOne({phoneNumber}).select('+password');
 
     if (!user || !(await user.CorrectPassword(password, user.password))) {
-        return next(new AppError('Incorrect email or password', 401));
+        return next(new AppError('Incorrect phoneNumber or password', 401));
       }
 
     const token = signToken(user._id);

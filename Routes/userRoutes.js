@@ -8,6 +8,7 @@ router.post('/signup',authControllers.signup)
 router.post('/login' , authControllers.login)
 router.post('/forgotPassword',authControllers.forgotPassword)
 router.patch('/resetPassword/:token',authControllers.resetPassword);
+router.post('/dept/login', authControllers.loginAdmin)
 
 
 router.route('/:id').get(userControllers.getUser)
