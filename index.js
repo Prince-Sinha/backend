@@ -19,7 +19,7 @@ const User = require('./Models/userModel');
 
      
 
-const DB = process.env.DATABASE.replace('<password>', process.env.PASSWORD);
+const DB = process.env.DATABASE;
 
 mongoose.connect(DB,{}).then(()=> console.log('DB connect successfully..'));
 
