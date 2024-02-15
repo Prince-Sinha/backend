@@ -11,7 +11,7 @@ router.patch('/resetPassword/:token',authControllers.resetPassword);
 router.post('/dept/login', authControllers.loginAdmin)
 
 
-router.route('/:id').get(userControllers.getUser)
+router.route('/:id').get(userControllers.getUser).patch(userControllers.updateOne);
 
 
 router.route('/posts/:id').get(userControllers.getPost);
