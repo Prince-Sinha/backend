@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: opinion-service
+  
+  data:
+    mongodb:
+      uri: mongodb+srv://k1ngfuon1verse_db_user:Qp65VIy46tPoKE4H@cluster0.zxtjmdf.mongodb.net/citizenportal?retryWrites=true&w=majority
+      database: citizenportal
+
+server:
+  port: ${PORT:8083}
+
+# User Service Configuration for Feign Client
+user-service:
+  url: https://user-service-26b4.onrender.com
+
+# Feign Configuration with Retry Support
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000  # 10 seconds
+        readTimeout: 60000     # 60 seconds
+        loggerLevel: full
+  httpclient:
+    enabled: true
+    max-connections: 200
+    max-connections-per-route: 50
+
+# Enable logging for Feign client
+logging:
+  level:
+    com.issuetracker.opinionservice.client.UserServiceClient: DEBUG
+    feign: DEBUG
+
+websocket:
+  endpoint: /ws
+  destination-prefix: /app
+  broker-prefix: /topic
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html

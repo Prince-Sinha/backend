@@ -1,0 +1,78 @@
+spring:
+  application:
+    name: user-service
+  
+  data:
+    mongodb:
+      uri: mongodb+srv://k1ngfuon1verse_db_user:Qp65VIy46tPoKE4H@cluster0.zxtjmdf.mongodb.net/citizenportal?retryWrites=true&w=majority
+      database: citizenportal
+  
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: 587
+    username: ${MAIL_USERNAME:your-email@gmail.com}
+    password: ${MAIL_PASSWORD:your-app-password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  
+  rabbitmq:
+    host: puffin.rmq2.cloudamqp.com
+    port: 5671                   # Note: 5671 for SSL (amqps), 5672 is for non-SSL
+    username: pvvycahn
+    password: TK7ncXDXeeImSWO-k7AvYuBL-crSEmtL
+    virtual-host: pvvycahn       # Important! CloudAMQP requires the vhost (usually same as username)
+    ssl:
+      enabled: true
+
+server:
+  port: ${PORT:8081}
+
+rabbitmq:
+  exchange: user.exchange
+  queue: user.support.queue
+  routing-key: user.support.routing.key
+
+
+jwt:
+  secret: 'Y2l0aXplbnBvcnRhbHNlY3JldGtleWZvcmp3dHRva2VuZ2VuZXJhdGlvbmFuZHZhbGlkYXRpb24yMDI1'
+  expiration: 86400000
+
+# File Upload
+file:
+  upload-dir: ./uploads/users
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+
+logging:
+  level:
+    com.issuetracker.userservice: DEBUG
+    org.springframework.data.mongodb: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
